@@ -1,0 +1,35 @@
+.lncomments,
+.lncomments + * {
+  overflow: hidden;
+  transition: .5s;
+  height: 0;
+}
+.lncomments { height: auto }
+.lncomments label {
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 7px 6px 0;
+  border-radius: 5px;
+  padding: 10px 15px;
+  background: #eee;
+  transition: .2s;
+}
+.lncomments label:hover {
+  background: #ccc;
+}
+.lncomments h3 {
+  color: red;
+  font: inherit;
+  animation: lncomments forward;
+}
+@keyframes lncomments{
+  from{transform:scale(0)}
+}
+
+#pmg_comment_titlez {
+  visibility: hidden;
+}
+
+/* #lncomments_checkbox_field_0 {
+  visibility: hidden;
+} */
