@@ -55,7 +55,13 @@ document.addEventListener('DOMContentLoaded', function(){
     var formNode = quizNode.nextElementSibling;
     var errorText = quizNode.getAttribute('data-' + LightningComments + '-error');
     var questions = parseQuiz(quizNode.getAttribute('data-' + LightningComments));
+
+    // correctId (key for localstorage for marking if a visitor paid the comment fee) depends on payperpost setting
+    const payperpost = document.getElementsByName("lncomments_settings[lncomments_checkbox_field_0]")[0].value
     var correctId = LightningComments + location.pathname + questions.map(function(q){return q.correct}).join('');
+    if(payperpost) {
+      correctId = LightningComments + location.host + questions.map(function(q){return q.correct}).join('');
+    }
     var errorNode = document.createElement('h3').appendChild(document.createTextNode(errorText)).parentNode;
     var container = document.createElement('div');
 

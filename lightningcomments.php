@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Pay to Comment with Lightning
-Version: 0.2.1
+Version: 0.2.2
 Plugin URI: https://wordpress.org/plugins/wp-lightning-comments/
 Author: @citlayik
 Author URI:  https://kriptode.com
@@ -25,6 +25,7 @@ function lncomments_form(){ ?>
     <!-- Would you like to comment?  -->
     <h5 style="text-align: center;">Please send a small Bitcoin payment via Lightning to enable comments.</h5>
     <div id="lncomments-settings" style="display:none;">
+      <?php lncomments_checkbox_field_0_render(); ?>
       <?php lncomments_text_field_1_render(); ?>
       <?php lncomments_text_field_2_render(); ?>
       <?php lncomments_text_field_3_render(); ?>
@@ -165,15 +166,13 @@ function lncomments_settings_init(  ) {
 		'pluginPage'
 	);
 
-	// add_settings_field(
-	// 	'lncomments_checkbox_field_0',
-	// 	__( 'Testnet if checked', 'wordpress' ),
-	// 	'lncomments_checkbox_field_0_render',
-	// 	'pluginPage',
-	// 	'lncomments_pluginPage_section'
-	// );
-
-
+	add_settings_field(
+		'lncomments_checkbox_field_0',
+		__( 'Require payment per post', 'wordpress' ),
+		'lncomments_checkbox_field_0_render',
+		'pluginPage',
+		'lncomments_pluginPage_section'
+	);
 	add_settings_field(
 		'lncomments_text_field_3',
 		__( 'Comment Amount (sats)', 'wordpress' ),
@@ -216,7 +215,7 @@ function lncomments_settings_init(  ) {
 		'pluginPage',
 		'lncomments_pluginPage_section'
 	);
-  // btcpay.store.cancreateinvoice
+
 
 }
 
